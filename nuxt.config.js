@@ -63,7 +63,6 @@ module.exports = {
   ** Router configuration
   */
   router: {
-    base: process.env.TRAVIS === 'true' ? '/vue-starter/' : '/',
     scrollBehavior (to, from, savedPosition) {
       return new Promise(resolve => {
         let scrollTo = (selector) => {
