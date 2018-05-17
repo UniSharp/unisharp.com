@@ -18,28 +18,15 @@
             nuxt-link.nav-link(to="#features", @click.native="hideCollapse") Features
           li.nav-item
             nuxt-link.nav-link(to="#map", @click.native="hideCollapse") Map
-          li.nav-item.dropdown
-            a#navbar-dropdown.nav-link.dropdown-toggle(href="#", role="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false", v-text="locales[locale]")
-              //- fa.ml-2(:icon="['fal', 'angle-down']", size="lg")
-              //- fa.ml-2(:icon="['fas', 'angle-down']", size="lg")
-            .dropdown-menu.dropdown-menu-right(aria-labelledby="navbar-dropdown")
-              a.dropdown-item(href="#", @click.prevent="changeLocale(locale)", :key="locale", v-for="(text, locale) in locales", v-text="text")
 </template>
 
 <script>
   import $ from 'jquery'
-  import { mapGetters } from 'vuex'
 
   export default {
-    computed: {
-      ...mapGetters(['locale', 'locales'])
-    },
     methods: {
       hideCollapse () {
         $('#navbar-content').collapse('hide')
-      },
-      changeLocale (locale) {
-        this.$router.push(this.$route.path.replace(/^\/[^/]+/, `/${locale}`))
       }
     }
   }
