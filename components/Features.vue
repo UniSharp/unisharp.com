@@ -1,31 +1,36 @@
 <template lang="pug">
-  section#features
-    .background(
-      data-top-bottom="background-position: 50% -100px;",
-      data-bottom-top="background-position: 50% 100px;",
-      data-anchor-target="#features")
-    .container.text-white.text-center
-      h2.text-uppercase(data-aos="fade-up") Features
+  section
+    //- .background(
+    //-   data-top-bottom="background-position: 50% -100px;",
+    //-   data-bottom-top="background-position: 50% 100px;",
+    //-   data-anchor-target="#features")
+    .container
+      h2.title 品質，是不妥協的堅持
+      p.description 我們會確保每個製作的網站和軟體具備以下的品質
       .row
-        .col-sm-6.col-md-4(data-aos="flip-left", :key="i", v-for="(feature, i) in features")
-          fa.mb-3(:icon="feature.icon", size="5x")
-          p.mb-0(v-text="feature.text")
+        .col-6.item
+          fa.icon(:icon="['far', 'user']")
+          h4.name 細緻高品質的介面視覺
+        .col-6.item
+          fa.icon(:icon="['far', 'user']")
+          h4.name RWD 跨裝置瀏覽體驗
+        .col-6.item
+          fa.icon(:icon="['far', 'user']")
+          h4.name 極具維護性的程式設計
+        .col-6.item
+          fa.icon(:icon="['far', 'user']")
+          h4.name 可高度擴充的系統架構
+        .col-6.item
+          fa.icon(:icon="['far', 'user']")
+          h4.name 清楚明瞭的自動化報表
+        .col-6.item
+          fa.icon(:icon="['far', 'user']")
+          h4.name 高穩定性的伺服器建置
 </template>
 
 <script>
   export default {
-    data () {
-      return {
-        features: [
-          { icon: ['fab', 'aws'], text: 'AWS' },
-          { icon: ['fab', 'digital-ocean'], text: 'DigitalOcean' },
-          { icon: ['fab', 'linode'], text: 'Linode' },
-          { icon: ['fab', 'docker'], text: 'Docker' },
-          { icon: ['fab', 'php'], text: 'PHP' },
-          { icon: ['fab', 'github'], text: 'GitHub' }
-        ]
-      }
-    }
+    //
   }
 </script>
 
@@ -33,21 +38,43 @@
   @import "~assets/scss/helpers";
   @import "~assets/scss/variables";
 
-  #features {
-    @include parallax-background("https://picsum.photos/1920/1080?random=4") {
-      @include background-mask;
+  section {
+    // @include parallax-background("https://picsum.photos/1920/1080?random=4") {
+    //   @include background-mask;
+    // }
+
+    background-color: #fff;
+
+    .container {
+      padding: 25vmin 10vmin;
+      text-align: center;
     }
 
-    padding-top: 10rem;
-    padding-bottom: 5rem;
+    .title {
+      font-size: 10vmin;
+      font-weight: 600;
+      padding-bottom: 5vmin;
 
-    h2, .row > * {
-      margin-bottom: 5rem;
+      + .description {
+        font-size: 4vmin;
+        padding: 0 7vmin 4vmin;
+        line-height: 1.75rem;
+      }
     }
 
-    svg {
-      width: 5rem;
-      height: 5rem;
+    .item {
+      padding: 5vmin 4vmin;
+
+      .icon {
+        width: 3.215rem;
+        height: 3.215rem;
+        margin-bottom: 2vmin;
+      }
+
+      .name {
+        font-size: 3.5vmin;
+        font-weight: 500;
+      }
     }
   }
 </style>

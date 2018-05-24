@@ -33,7 +33,9 @@ module.exports = {
       { hid: 'og:site_name', property: 'og:site_name', content: 'unisharp' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/earlyaccess/notosanstc.css' }
     ],
     script: [
       { src: `https://cdn.polyfill.io/v2/polyfill.min.js?features=${polyfills.join(',')}` },

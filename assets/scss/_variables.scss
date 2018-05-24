@@ -138,16 +138,16 @@ $sizes: (
 // Settings for the `<body>` element.
 
 $body-bg:                   $white;
-$body-color:                $gray-900;
+$body-color:                #41454c;
 
 // Links
 //
 // Style anchor elements.
 
-$link-color:                theme-color("primary");
+$link-color:                $body-color;
 $link-decoration:           none;
-$link-hover-color:          darken($link-color, 15%);
-$link-hover-decoration:     underline;
+$link-hover-color:          $link-color;
+$link-hover-decoration:     none;
 
 // Paragraphs
 //
@@ -223,12 +223,12 @@ $transition-collapse:         height .35s ease;
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "微軟正黑體", "Microsoft JhengHei", "Microsoft YaHei", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-family-sans-serif:      "Roboto", Arial, "Noto Sans TC", sans-serif;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 $font-family-base:            $font-family-sans-serif;
 // stylelint-enable value-keyword-case
 
-$font-size-base:              1rem; // Assumes the browser default, typically `16px`
+$font-size-base:              1.1rem; // Assumes the browser default, typically `16px`
 $font-size-lg:                ($font-size-base * 1.25);
 $font-size-sm:                ($font-size-base * .875);
 
@@ -236,7 +236,7 @@ $font-weight-light:           300;
 $font-weight-normal:          400;
 $font-weight-bold:            700;
 
-$font-weight-base:            $font-weight-normal;
+$font-weight-base:            $font-weight-light;
 $line-height-base:            1.5;
 
 $h1-font-size:                $font-size-base * 2.5;

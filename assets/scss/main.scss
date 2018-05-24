@@ -3,6 +3,40 @@
 @import "node_modules/animate.css/animate.css";
 @import "sizing";
 
-* {
-  letter-spacing: .1rem;
+ul, ol, li, h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+p {
+  letter-spacing: .03125rem;
+}
+
+.u-btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  font-size: .9rem;
+  letter-spacing: .2rem;
+  min-width: 9.375rem;
+  border-radius: 6.25rem;
+  text-align: center;
+  transition: all .3s;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.u-btn-white {
+    color: #fff;
+    border: 2px solid #fff;
+
+    &:hover {
+      color: #262c32;
+      background-color: #fff;
+    }
+  }
 }

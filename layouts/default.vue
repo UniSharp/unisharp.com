@@ -1,9 +1,9 @@
 <template lang="pug">
   div
-    u-header.fixed-top(:class="`navbar-${isVeryTop ? 'dark' : 'light'}`")
+    u-header(:class="{ 'very-top': isVeryTop }")
     main
       nuxt
-    u-footer(:class="{ 'show-gotop': !isVeryTop }")
+    u-footer
 </template>
 
 <script>
@@ -32,7 +32,7 @@
       if (process.browser) {
         this.$nextTick(() => {
           $(window).scroll(() => {
-            this.isVeryTop = !($(window).scrollTop() > ($(window).height() - $('#navbar').height()) * 0.5)
+            this.isVeryTop = $(window).scrollTop() > 10
           }).scroll()
         })
       }

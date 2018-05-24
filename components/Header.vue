@@ -1,32 +1,36 @@
 <template lang="pug">
-  header.text-uppercase
-    nav#navbar.navbar.navbar-expand-md
-      nuxt-link.navbar-brand(to="#")
-        .logo
-          img.white(src="~/assets/images/logo-white.svg")
-          img.black(src="~/assets/images/logo-black.svg")
-        span UniSharp
-      button.navbar-toggler.collapsed(type="button", data-toggle="collapse", data-target="#navbar-content", aria-controls="navbar-content", aria-expanded="false", aria-label="Toggle navigation")
-        span.navbar-toggler-icon
-      #navbar-content.collapse.navbar-collapse
-        ul.navbar-nav.ml-auto
-          li.nav-item.active
-            nuxt-link.nav-link(to="#", @click.native="hideCollapse")
-              | Home
-              span.sr-only (current)
-          li.nav-item
-            nuxt-link.nav-link(to="#features", @click.native="hideCollapse") Features
-          li.nav-item
-            nuxt-link.nav-link(to="#map", @click.native="hideCollapse") Map
+  header(:class="{ 'u-menu-opened': opened }")
+    button.u-menu-toggler(@click.prevent="opened = !opened")
+      span.u-menu-toggler-icon
+    .u-menu
+      ul.list-unstyled.u-nav
+        li.u-nav-item
+          nuxt-link.u-nav-item-link(to="/") 首頁
+        li.u-item
+          nuxt-link.u-nav-item-link(to="/") 服務項目
+        li.u-item
+          nuxt-link.u-nav-item-link(to="/") 合作案例
+        li.u-item
+          nuxt-link.u-nav-item-link(to="/") 關於悠夏爾
+        li.u-item
+          nuxt-link.u-nav-item-link(to="/") 聯絡洽詢
+      ul.list-unstyled.u-contact
+        li
+          span TEL:
+          | 02-25596680
+        li
+          span MAIL:
+          | service@unisharp.com
+        li
+          span ADDRESS:
+          | 10343 台北市大同區塔城街 66 號 7 樓之 1
 </template>
 
 <script>
-  import $ from 'jquery'
-
   export default {
-    methods: {
-      hideCollapse () {
-        $('#navbar-content').collapse('hide')
+    data () {
+      return {
+        opened: false
       }
     }
   }
@@ -36,241 +40,143 @@
   @import "~assets/scss/helpers";
   @import "~assets/scss/variables";
 
-  @mixin navbar-collapse-style {
-    &.navbar {
-      .nav-link, .dropdown-item {
-        padding: 1rem .5rem;
+  .u-menu-toggler {
+    @include transition(.7s);
+    @include border-radius(50%);
+
+    position: fixed;
+    top: .625rem;
+    right: .625rem;
+    width: 4rem;
+    height: 4rem;
+    padding: .625rem 1.25rem;
+    background: transparent;
+    border: none;
+    outline: none !important;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    z-index: 100;
+
+    &-icon {
+      position: relative;
+
+      &, &:before, &:after {
+        @include transition(.3s);
+
+        flex: 0 0 auto;
+        width: 1.5rem;
+        height: .125rem;
+        background-color: #fff;
       }
 
-      .dropdown-menu {
-        border: none;
-        margin: 0;
-        padding: 0 1rem;
+      &:before, &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+      }
+
+      &:before {
+        top: -.55rem;
+      }
+
+      &:after {
+        bottom: -.55rem;
+      }
+    }
+
+    &:hover &-icon {
+      width: 1.05rem;
+
+      &:after {
+        width: .6rem;
       }
     }
 
-    header:not(.navbar-light) & {
-      .navbar-collapse {
-        @include border-radius;
-
-        margin-top: 1rem;
-        padding: .75rem 1.5rem;
-        background-color: rgba($white, 1);
-
-        .nav-link {
-          color: $navbar-light-color;
-
-          @include hover-focus {
-            color: $navbar-light-hover-color;
-          }
-
-          &.disabled {
-            color: $navbar-light-disabled-color;
-          }
-        }
-
-        .show > .nav-link, .active > .nav-link, .nav-link.show, .nav-link.active {
-          color: $navbar-light-active-color;
-        }
-      }
+    .very-top &, .u-menu-opened & {
+      background-color: #262c32;
     }
 
-    header.navbar-light & {
-      .navbar-collapse {
-        margin-top: .5rem;
-      }
-
-      .nav-item {
-        border-top: 1px solid $gray-200;
-      }
-    }
-  }
-
-  header {
-    padding: 1rem;
-    background-color: rgba($white, 0);
-
-    &, * {
-      @include transition;
+    .very-top & {
+      box-shadow: 0 0 6.25rem rgba(0, 0, 0, .3);
     }
 
-    .navbar {
-      padding: 0;
+    .u-menu-opened & {
+      box-shadow: 0 0 1.875rem rgba(0, 0, 0, .3);
 
-      .navbar-brand {
-        font-size: 1.75rem;
-        display: flex;
-        align-items: center;
+      &-icon {
+        width: 0;
+        background-color: rgba(255, 255, 255, 0);
 
-        .logo {
-          margin-top: -.25rem;
-          margin-left: .25rem;
-          margin-right: .5rem;
-          position: relative;
-          width: 3.75rem;
-
-          &, img {
-            height: 2.25rem;
-          }
-
-          img {
-            position: absolute;
-            top: 0;
-            left: 0;
-
-            &.black {
-              opacity: 0;
-            }
-          }
-        }
-      }
-
-      .navbar-toggler {
-        width: 1.75em;
-        height: 1.75em;
-        padding-left: 0;
-        padding-right: 0;
-        border: none;
-        outline: none !important;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        .navbar-toggler-icon {
-          position: relative;
-          background-image: none;
-
-          &, &:before, &:after {
-            @include transition;
-            @include border-radius(.25em);
-
-            flex: 0 0 auto;
-            width: 1.75em;
-            height: .2em;
-            background-color: $navbar-dark-color;
-          }
-
-          &:before, &:after {
-            content: "";
-            position: absolute;
-            left: 0;
-          }
-
-          &:before {
-            top: -.45em;
-          }
-
-          &:after {
-            bottom: -.45em;
-          }
+        &:before, &:after {
+          width: 1.5rem !important;
         }
 
-        &:hover .navbar-toggler-icon {
-          &:before {
-            top: -.55em;
-          }
-
-          &:after {
-            bottom: -.55em;
-          }
+        &:before {
+          top: 0;
+          transform: rotate(45deg);
         }
 
-        &:not(.collapsed) {
-          .navbar-toggler-icon {
-            width: 0;
-            background-color: rgba($navbar-dark-color, 0);
-
-            &:before, &:after {
-              left: -.875em !important;
-            }
-
-            &:before {
-              top: 0 !important;
-              transform: rotate(45deg);
-            }
-
-            &:after {
-              bottom: 0 !important;
-              transform: rotate(-45deg);
-            }
-          }
-
-          &:not(:hover) .navbar-toggler-icon {
-            transform: scale(.9);
-          }
-        }
-      }
-
-      .dropdown-menu {
-        min-width: auto;
-      }
-
-      // .dropdown-toggle:after {
-      //   display: none;
-      // }
-    }
-
-    &.navbar-light {
-      background-color: rgba($white, 1);
-      box-shadow: 0 .25rem .125rem 0 rgba($gray-900, .1);
-      padding: .5rem 1rem;
-
-      .navbar-brand {
-        font-size: 1.5rem;
-
-        .logo {
-          width: 3rem;
-
-          &, img {
-            height: 1.75rem;
-          }
-
-          img {
-            &.white {
-              opacity: 0;
-            }
-
-            &.black {
-              opacity: 1;
-            }
-          }
-        }
-      }
-
-      .navbar-toggler {
-        .navbar-toggler-icon {
-          &, &:before, &:after {
-            background-color: $navbar-light-color;
-          }
-        }
-
-        &:not(.collapsed) .navbar-toggler-icon {
-          background-color: rgba($navbar-light-color, 0);
+        &:after {
+          bottom: 0;
+          transform: rotate(-45deg);
         }
       }
     }
   }
 
-  .navbar-expand-never {
-    @include navbar-collapse-style;
-  }
+  .u-menu {
+    @include transition(.5s cubic-bezier(.17, .84, .38, 1));
 
-  .navbar-expand {
-    @each $breakpoint in map-keys($grid-breakpoints) {
-      $next: breakpoint-next($breakpoint, $grid-breakpoints);
-      $infix: breakpoint-infix($next, $grid-breakpoints);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, .98);
+    z-index: 90;
+    padding: 0 1rem;
+    transform: translateX(100%);
 
-      &#{$infix} {
-        @include media-breakpoint-down($breakpoint) {
-          @include navbar-collapse-style;
-        }
+    .u-nav, .u-contact {
+      width: 100%;
+      text-align: center;
+    }
 
-        @include media-breakpoint-up($next) {
-          .navbar-toggler {
-            display: none !important;
-          }
+    .u-nav {
+      &-item {
+        &-link {
+          display: block;
+          padding: 3vmin 0;
+          font-size: 7vmin;
+          font-weight: 600;
         }
       }
+    }
+
+    .u-contact {
+      letter-spacing: 0;
+      font-size: 3.5vmin;
+      font-weight: 400;
+
+      li {
+        + li {
+          margin-top: .5rem;
+        }
+
+        span {
+          font-weight: 600;
+          margin-right: .375rem;
+        }
+      }
+    }
+
+    .u-menu-opened & {
+      transform: translateX(0);
     }
   }
 </style>
