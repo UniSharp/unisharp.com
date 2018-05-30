@@ -13,8 +13,16 @@
         | 洞悉使用者操作習慣，透過美觀細膩的視覺設計，與易用性高的介面動線，
         | 讓您的網站在電腦與各個行動裝置上都擁有絕佳的使用體驗。
       nuxt-link.u-btn.u-btn-white(to="#") 了解服務項目
-    section.parallax.parallax-alleylife
-    section.parallax.parallax-cango
+    section#parallax-alleylife.parallax.parallax-alleylife
+      .background(
+        data-top-bottom="background-position: 50% -100px;",
+        data-bottom-top="background-position: 50% 100px;",
+        data-anchor-target="#parallax-alleylife")
+    section#parallax-cango.parallax.parallax-cango
+      .background(
+        data-top-bottom="background-position: 50% -100px;",
+        data-bottom-top="background-position: 50% 100px;",
+        data-anchor-target="#parallax-cango")
     section.introduction.introduction-function
       h2.title
         span 技術實力
@@ -23,7 +31,11 @@
         | 持續關注最新的網路技術，建構可高度擴充的系統架構，
         | 並保持充足的維護彈性和穩定性，滿足您所需要的各種技術支援和功能需求。
       nuxt-link.u-btn.u-btn-white(to="#") 了解服務項目
-    section.parallax.parallax-tainan
+    section#parallax-tainan.parallax.parallax-tainan
+      .background(
+        data-top-bottom="background-position: 50% -100px;",
+        data-bottom-top="background-position: 50% 100px;",
+        data-anchor-target="#parallax-tainan")
     section.container-fluid.no-gutters
       .row
         section.col-6.image.image-employee
@@ -36,19 +48,26 @@
         | 悠夏爾所開發的網站內容管理系統「BACKEND」，
         | 提供美觀、直覺易用的後台介面，就連操作後台也能賞心悅目。
       nuxt-link.u-btn.u-btn-white(to="#") 了解服務項目
-    section.parallax.parallax-backend
-    section.image.image-backend
+    section#parallax-backend.parallax.parallax-backend
+      .background(
+        data-top-bottom="background-position: 50% -100px;",
+        data-bottom-top="background-position: 50% 100px;",
+        data-anchor-target="#parallax-backend")
+    section#parallax-big-backend.parallax.parallax-big-backend
+      .background(
+        data-top-bottom="background-position: 50% -100px;",
+        data-bottom-top="background-position: 50% 100px;",
+        data-anchor-target="#parallax-big-backend")
     u-features
-    section.introduction.introduction-backend
     section#contact.contact
-      //- .background(
+      .background(
         data-top-bottom="background-position: 50% -100px;",
         data-bottom-top="background-position: 50% 100px;",
         data-anchor-target="#contact")
       .wrapper
         h6.title 與我們合作
         p.content 打造出色產品的任務，就交給專業的悠夏爾團隊吧
-        nuxt-link.u-btn.u-btn-white(to="#") 了解服務項目
+        nuxt-link.u-btn.u-btn-white(to="#") 聯絡洽詢
 </template>
 
 <script>
@@ -61,6 +80,9 @@
 </script>
 
 <style lang="scss" scoped>
+  @import "~assets/scss/helpers";
+  @import "~assets/scss/variables";
+
   .index {
     .main {
       background-color: #fff;
@@ -71,6 +93,10 @@
     }
 
     .contact {
+      @include parallax-background("~assets/images/index/contact.jpg") {
+        @include background-mask(rgba(38, 44, 50, .85));
+      }
+
       height: 28.125rem;
       color: #fff;
       display: flex;
@@ -123,19 +149,33 @@
       height: 50vh;
 
       &-alleylife {
-        background-color: #efcc24;
+        @include parallax-background("~assets/images/index/alleylife.jpg") {
+          background-color: #efcc24;
+        }
       }
 
       &-cango {
-        background-color: #e0e0e0;
+        @include parallax-background("~assets/images/index/cango.jpg") {
+          background-color: #e0e0e0;
+        }
       }
 
       &-tainan {
-        background-color: #fd5656;
+        @include parallax-background("~assets/images/index/tainan.jpg") {
+          background-color: #fd5656;
+        }
       }
 
       &-backend {
-        background-color: #77c7c2;
+        @include parallax-background("~assets/images/index/backend.jpg") {
+          background-color: #77c7c2;
+        }
+      }
+
+      &-big-backend {
+        @include parallax-background("~assets/images/index/big-backend.jpg");
+
+        height: 50vh;
       }
     }
 
@@ -144,8 +184,12 @@
         height: 30vh;
       }
 
-      &-backend {
-        height: 50vh;
+      &-employee {
+        @include background("~assets/images/index/employee.jpg");
+      }
+
+      &-office {
+        @include background("~assets/images/index/office.jpg");
       }
     }
   }

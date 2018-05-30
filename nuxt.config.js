@@ -58,7 +58,6 @@ module.exports = {
   plugins: [
     '~/plugins/FontAwesome',
     '~/plugins/Skrollr',
-    '~/plugins/Aos',
     '~/plugins/Helpers'
   ],
   /*
@@ -126,7 +125,6 @@ module.exports = {
       'bootstrap',
       'mobile-detect',
       'skrollr',
-      'aos',
       'js-cookie',
       '@unisharp/helpers.js'
     ],

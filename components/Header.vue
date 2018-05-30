@@ -138,6 +138,10 @@
     align-items: center;
     justify-content: center;
     background-color: rgba(255, 255, 255, .98);
+    background-size: 101%;
+    background-image: url("~assets/images/menu-bottom-bg.svg");
+    background-repeat: no-repeat;
+    background-position: center calc(100% + 1px);
     z-index: 90;
     padding: 0 1rem;
     transform: translateX(100%);

@@ -1,30 +1,26 @@
 <template lang="pug">
   section
-    //- .background(
-    //-   data-top-bottom="background-position: 50% -100px;",
-    //-   data-bottom-top="background-position: 50% 100px;",
-    //-   data-anchor-target="#features")
     .container
       h2.title 品質，是不妥協的堅持
       p.description 我們會確保每個製作的網站和軟體具備以下的品質
       .row
         .col-6.item
-          fa.icon(:icon="['far', 'user']")
+          img.icon(src="~/assets/images/quality/01.png")
           h4.name 細緻高品質的介面視覺
         .col-6.item
-          fa.icon(:icon="['far', 'user']")
+          img.icon(src="~/assets/images/quality/02.png")
           h4.name RWD 跨裝置瀏覽體驗
         .col-6.item
-          fa.icon(:icon="['far', 'user']")
+          img.icon(src="~/assets/images/quality/03.png")
           h4.name 極具維護性的程式設計
         .col-6.item
-          fa.icon(:icon="['far', 'user']")
+          img.icon(src="~/assets/images/quality/04.png")
           h4.name 可高度擴充的系統架構
         .col-6.item
-          fa.icon(:icon="['far', 'user']")
+          img.icon(src="~/assets/images/quality/05.png")
           h4.name 清楚明瞭的自動化報表
         .col-6.item
-          fa.icon(:icon="['far', 'user']")
+          img.icon(src="~/assets/images/quality/06.png")
           h4.name 高穩定性的伺服器建置
 </template>
 
@@ -39,10 +35,6 @@
   @import "~assets/scss/variables";
 
   section {
-    // @include parallax-background("https://picsum.photos/1920/1080?random=4") {
-    //   @include background-mask;
-    // }
-
     background-color: #fff;
 
     .container {

@@ -6,9 +6,12 @@
         span 專注深刻
         span 完美呈現
       p 我們專注於打造絕佳的網路產品
+    //- fa.arrow(:icon="['far', 'arrow-alt-circle-down']", size="3x", @click="scroll")
     .banner-background
     .banner-mask
-    //- fa.arrow(:icon="['far', 'arrow-alt-circle-down']", size="3x", @click="scroll")
+    .banner-logo
+      nuxt-link(to="/")
+        img(src="~/assets/images/logo-2.svg")
 </template>
 
 <script>
@@ -35,6 +38,16 @@
     color: #fff;
     width: 100%;
     height: 100vh;
+
+    &-logo {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+
+      img {
+        width: 8.125rem;
+      }
+    }
 
     &-caption {
       text-align: center;
