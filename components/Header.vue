@@ -14,6 +14,16 @@
           nuxt-link.u-nav-item-link(to="/") 關於悠夏爾
         li.u-item
           nuxt-link.u-nav-item-link(to="/") 聯絡洽詢
+      ul.list-unstyled.u-social
+        li
+          a(href="#", target="_blank")
+            img(src="~/assets/images/icon/unisharp.svg")
+        li
+          a(href="#", target="_blank")
+            img(src="~/assets/images/icon/github.svg")
+        li
+          a(href="#", target="_blank")
+            img(src="~/assets/images/icon/fb.svg")
       ul.list-unstyled.u-contact
         li
           span TEL:
@@ -152,12 +162,36 @@
     }
 
     .u-nav {
+      margin-bottom: 7vh;
+
       &-item {
         &-link {
           display: block;
-          padding: 3vmin 0;
+          padding: 1.5vmin 0;
           font-size: 7vmin;
           font-weight: 600;
+        }
+      }
+    }
+
+    .u-social {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2vh;
+
+      li {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin: 0 1.3vh;
+        border-radius: 50%;
+        background-color: #262c32;
+
+        a img {
+          @include transition(.6s);
+        }
+
+        a:hover img {
+          transform: rotate(360deg);
         }
       }
     }
