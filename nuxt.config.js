@@ -47,6 +47,10 @@ module.exports = {
   */
   loading: { color: '#3B8070' },
   /*
+  ** Customize the loading page
+  */
+  loadingIndicator: '~/loading/index.html',
+  /*
   ** Global css
   */
   css: [

@@ -1,5 +1,7 @@
 <template lang="pug">
   div
+    transition(name="fade")
+      u-loading(v-if="loading")
     u-header(:class="{ 'very-top': isVeryTop }")
     main
       nuxt
@@ -10,9 +12,10 @@
   import $ from 'jquery'
   import UHeader from '~/components/Header'
   import UFooter from '~/components/Footer'
+  import ULoading from '~/components/Loading'
 
   export default {
-    components: { UHeader, UFooter },
+    components: { UHeader, UFooter, ULoading },
     head () {
       return {
         meta: [
@@ -25,6 +28,7 @@
     },
     data () {
       return {
+        loading: true,
         isVeryTop: true
       }
     },
@@ -36,6 +40,8 @@
           }).scroll()
         })
       }
+
+      $(() => this.$nextTick(() => { this.loading = false }))
     }
   }
 </script>
@@ -44,6 +50,20 @@
   #__nuxt {
     min-height: 100vh;
     position: relative;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 1s;
+
+    .u-loading-logo {
+      transition: opacity .3s;
+    }
+  }
+
+  .fade-enter, .fade-leave-to {
+    &, .u-loading-logo {
+      opacity: 0;
+    }
   }
 </style>
 
