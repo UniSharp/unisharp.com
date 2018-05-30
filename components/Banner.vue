@@ -7,6 +7,8 @@
         span 完美呈現
       p 我們專注於打造絕佳的網路產品
     .banner-background
+      video(autoplay, loop)
+        source(src="~/assets/videos/banner.mp4", type="video/mp4")
     .banner-mask
     .banner-logo
       nuxt-link(to="/")
@@ -78,13 +80,6 @@
       bottom: 0;
       left: 0;
       z-index: -1;
-    }
-
-    &-background {
-      background-image: url("https://picsum.photos/1920/1080?random=1");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center;
     }
 
     &-mask {
