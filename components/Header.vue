@@ -1,5 +1,5 @@
 <template lang="pug">
-  header(:class="{ 'u-menu-opened': opened }")
+  header
     button.u-menu-toggler(@click.prevent="opened = !opened")
       span.u-menu-toggler-icon
     .u-menu
@@ -37,10 +37,17 @@
 </template>
 
 <script>
+  import $ from 'jquery'
+
   export default {
     data () {
       return {
         opened: false
+      }
+    },
+    watch: {
+      opened (value) {
+        $('html')[['addClass', 'removeClass'][+value]]('u-menu-opened')
       }
     }
   }
