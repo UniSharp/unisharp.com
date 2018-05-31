@@ -51,7 +51,6 @@
 
       h3 {
         font-size: 3vmin;
-        font-size: .875rem;
         letter-spacing: .125rem;
         text-indent: .125rem;
         opacity: .4;
@@ -125,6 +124,48 @@
         .icon {
           background-image: url("~assets/images/arrow-down-black.png");
         }
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      &-caption {
+        h3 {
+          font-size: .9625rem;
+          letter-spacing: .125rem;
+          text-indent: .125rem;
+          padding-bottom: 1.875rem;
+        }
+
+        h1 {
+          font-size: 4.84rem;
+          line-height: 5.5rem;
+          padding-bottom: 1.5625rem;
+
+          span {
+            display: inline-block;
+            padding: 0 .75rem;
+          }
+        }
+
+        p {
+          font-size: 1.1rem;
+          margin-bottom: 4.375rem;
+          letter-spacing: .3125rem;
+          text-indent: .3125rem;
+        }
+      }
+
+      &-logo {
+        top: 3.25rem;
+        left: 3.125rem;
+
+        img {
+          width: 10rem;
+        }
+      }
+
+      &-arrow {
+        bottom: 20%;
       }
     }
   }

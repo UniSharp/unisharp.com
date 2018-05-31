@@ -2,38 +2,59 @@
   header
     button.u-menu-toggler(@click.prevent="opened = !opened")
       span.u-menu-toggler-icon
+      span.u-menu-toggler-text 選單
     .u-menu
-      ul.list-unstyled.u-nav
-        li.u-nav-item
-          nuxt-link.u-nav-item-link(to="/") 首頁
-        li.u-item
-          nuxt-link.u-nav-item-link(to="/") 服務項目
-        li.u-item
-          nuxt-link.u-nav-item-link(to="/") 合作案例
-        li.u-item
-          nuxt-link.u-nav-item-link(to="/") 關於悠夏爾
-        li.u-item
-          nuxt-link.u-nav-item-link(to="/") 聯絡洽詢
-      ul.list-unstyled.u-social
-        li
-          a(href="#", target="_blank")
-            img(src="~/assets/images/icon/unisharp.svg")
-        li
-          a(href="#", target="_blank")
-            img(src="~/assets/images/icon/github.svg")
-        li
-          a(href="#", target="_blank")
-            img(src="~/assets/images/icon/fb.svg")
-      ul.list-unstyled.u-contact
-        li
-          span TEL:
-          | 02-25596680
-        li
-          span MAIL:
-          | service@unisharp.com
-        li
-          span ADDRESS:
-          | 10343 台北市大同區塔城街 66 號 7 樓之 1
+      .wrapper
+        ul.list-unstyled.u-nav
+          li.u-nav-item
+            nuxt-link.u-nav-item-link(to="/")
+              span.en index
+              span.tw 首頁
+          li.u-nav-item
+            nuxt-link.u-nav-item-link(to="/")
+              span.en service
+              span.tw 服務項目
+          li.u-nav-item
+            nuxt-link.u-nav-item-link(to="/")
+              span.en works
+              span.tw 合作案例
+          li.u-nav-item
+            nuxt-link.u-nav-item-link(to="/")
+              span.en about
+              span.tw 關於悠夏爾
+          li.u-nav-item
+            nuxt-link.u-nav-item-link(to="/")
+              span.en contact
+              span.tw 聯絡洽詢
+        ul.list-unstyled.u-social
+          li
+            a(href="#", target="_blank")
+              img(src="~/assets/images/icon/unisharp.svg")
+              span.text
+                span.en blog
+                span.tw 部落格
+          li
+            a(href="#", target="_blank")
+              img(src="~/assets/images/icon/github.svg")
+              span.text
+                span.en open source
+                span.tw 開放原始碼
+          li
+            a(href="#", target="_blank")
+              img(src="~/assets/images/icon/fb.svg")
+              span.text
+                span.en facebook
+                span.tw 臉書專頁
+        ul.list-unstyled.u-contact
+          li
+            span TEL:
+            | 02-25596680
+          li
+            span MAIL:
+            | service@unisharp.com
+          li
+            span ADDRESS:
+            | 10343 台北市大同區塔城街 66 號 7 樓之 1
 </template>
 
 <script>
@@ -102,6 +123,10 @@
       }
     }
 
+    &-text {
+      display: none;
+    }
+
     &:hover &-icon {
       width: 1.05rem;
 
@@ -150,18 +175,23 @@
     right: 0;
     bottom: 0;
     left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     background-color: rgba(255, 255, 255, .98);
     background-size: 101%;
     background-image: url("~assets/images/menu-bottom-bg.svg");
     background-repeat: no-repeat;
     background-position: center calc(100% + 1px);
     z-index: 90;
-    padding: 0 1rem;
     transform: translateX(100%);
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1rem;
+      width: 100%;
+      height: 100%;
+    }
 
     .u-nav, .u-contact {
       width: 100%;
@@ -177,6 +207,10 @@
           padding: 1.5vmin 0;
           font-size: 7vmin;
           font-weight: 600;
+
+          .en {
+            display: none;
+          }
         }
       }
     }
@@ -187,18 +221,23 @@
       margin-bottom: 2vh;
 
       li {
-        width: 2.5rem;
-        height: 2.5rem;
         margin: 0 1.3vh;
-        border-radius: 50%;
-        background-color: #262c32;
 
         a img {
           @include transition(.6s);
+
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: 50%;
+          background-color: #262c32;
         }
 
         a:hover img {
           transform: rotate(360deg);
+        }
+
+        .text {
+          display: none;
         }
       }
     }
@@ -222,6 +261,131 @@
 
     .u-menu-opened & {
       transform: translateX(0);
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .u-menu-toggler {
+      top: 2.5rem;
+      right: 2.5rem;
+      width: 8rem;
+      height: 3.125rem;
+      padding: .1875rem 1.875rem;
+      justify-content: space-between;
+      border-radius: 12.5rem;
+
+      &-text {
+        display: block;
+        color: #fff;
+        font-size: .9625rem;
+      }
+    }
+
+    .u-menu {
+      .wrapper {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        align-content: center;
+        justify-content: flex-start;
+        max-width: 69rem;
+        margin: auto;
+        padding-bottom: 6.25rem;
+      }
+
+      > * {
+        flex: 0 0 auto;
+      }
+
+      .en {
+        font-size: .825rem;
+        font-weight: 500;
+        letter-spacing: .0625rem;
+        opacity: .4;
+        text-transform: uppercase;
+      }
+
+      .u-nav {
+        margin-bottom: 6.125rem;
+        display: flex;
+        flex-wrap: wrap;
+
+        &-item {
+          flex: 0 0 auto;
+          padding: 0 2.5rem;
+          margin-bottom: 1.625rem;
+
+          &-link {
+            padding: 0;
+            text-align: left;
+            position: relative;
+
+            .en, .tw {
+              display: block;
+            }
+
+            .tw {
+              font-size: 2.2rem;
+              line-height: 1.1;
+            }
+
+            &:after {
+              @include transition(.3s);
+
+              content: "";
+              position: absolute;
+              left: 0;
+              bottom: -.75rem;
+              width: 0;
+              height: .25rem;
+              opacity: 0;
+              background: #262c32;
+            }
+
+            &:hover:after {
+              width: 100%;
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      .u-social {
+        margin-bottom: 1rem;
+        padding: 0 0 0 2.5rem;
+
+        li {
+          margin: 0 2.5rem 0 0;
+
+          a {
+            display: flex;
+            align-items: center;
+
+            .text {
+              display: block;
+              margin-left: 1rem;
+
+              .en, .tw {
+                display: block;
+              }
+
+              .tw {
+                font-size: 1.1rem;
+                font-weight: 600;
+              }
+            }
+          }
+        }
+      }
+
+      .u-contact {
+        width: auto;
+        padding: 0 2.5rem 0 0;
+        font-size: .8943rem;
+        letter-spacing: .0625rem;
+        text-align: left;
+        margin-left: auto;
+      }
     }
   }
 </style>

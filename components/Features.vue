@@ -4,22 +4,22 @@
       h2.title 品質，是不妥協的堅持
       p.description 我們會確保每個製作的網站和軟體具備以下的品質
       .row
-        .col-6.item
+        .col-6.col-md-4.item
           img.icon(src="~/assets/images/quality/01.png")
           h4.name 細緻高品質的介面視覺
-        .col-6.item
+        .col-6.col-md-4.item
           img.icon(src="~/assets/images/quality/02.png")
           h4.name RWD 跨裝置瀏覽體驗
-        .col-6.item
+        .col-6.col-md-4.item
           img.icon(src="~/assets/images/quality/03.png")
           h4.name 極具維護性的程式設計
-        .col-6.item
+        .col-6.col-md-4.item
           img.icon(src="~/assets/images/quality/04.png")
           h4.name 可高度擴充的系統架構
-        .col-6.item
+        .col-6.col-md-4.item
           img.icon(src="~/assets/images/quality/05.png")
           h4.name 清楚明瞭的自動化報表
-        .col-6.item
+        .col-6.col-md-4.item
           img.icon(src="~/assets/images/quality/06.png")
           h4.name 高穩定性的伺服器建置
 </template>
@@ -66,6 +66,34 @@
       .name {
         font-size: 3.5vmin;
         font-weight: 500;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      .container {
+        padding: 9.375rem 0;
+
+        .title {
+          font-size: 2.75rem;
+          padding-bottom: 1.1rem;
+
+          + .description {
+            font-size: 1.1rem;
+            padding: 0;
+          }
+        }
+
+        .item {
+          padding: 3.75rem 3.75rem 0;
+
+          .icon {
+            margin-bottom: 1.1rem;
+          }
+
+          .name {
+            font-size: 1.1rem;
+          }
+        }
       }
     }
   }
