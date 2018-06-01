@@ -1,3 +1,0 @@
-source ./ansible/ansible-config
-
-ansible-playbook ansible-nuxt.yml -i ansible/hosts
