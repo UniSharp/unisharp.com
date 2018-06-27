@@ -1,19 +1,21 @@
 <template lang="pug">
   section.banner
     .banner-caption
-      h3.text-uppercase We build great product
-      h1
-        span 專注深刻
-        span 完美呈現
-      p 我們專注於打造絕佳的網路產品
+      h3.text-uppercase(v-if="withTitle") We build great product
+      h1(v-if="isHome")
+        span {{ hometitle }}
+        span {{ hometitle2 }}
+      h1(v-else) {{ title }}
+      p {{ subtitle }}
     .banner-background
-      video(autoplay, loop)
+      video(autoplay, loop, v-if="isVideo")
         source(src="~/assets/videos/banner.mp4", type="video/mp4")
+      .banner-image(v-else, :style="`background-image: url(${imgUrl})`")
     .banner-mask
     .banner-logo
       nuxt-link(to="/")
         img(src="~/assets/images/logo.svg")
-    .banner-arrow(@click="scroll")
+    .banner-arrow(@click="scroll", v-if="withArrow")
       .icon
 </template>
 
@@ -21,6 +23,53 @@
   import $ from 'jquery'
 
   export default {
+    data () {
+      return {
+        loading: true
+      }
+    },
+    props: {
+      withTitle: {
+        type: Boolean,
+        default: false
+      },
+      withArrow: {
+        type: Boolean,
+        default: false
+      },
+      isHome: {
+        type: Boolean,
+        default: false
+      },
+      isVideo: {
+        type: Boolean,
+        default: false
+      },
+      isHero: {
+        type: String,
+        default: false
+      },
+      title: {
+        type: String,
+        required: true
+      },
+      subtitle: {
+        type: String,
+        required: true
+      },
+      hometitle: {
+        type: String,
+        required: true
+      },
+      hometitle2: {
+        type: String,
+        required: true
+      },
+      imgUrl: {
+        type: String,
+        required: true
+      }
+    },
     methods: {
       scroll () {
         $('html, body').stop(true, true).animate({ scrollTop: $(window).height() })
@@ -40,7 +89,11 @@
     position: relative;
     color: #fff;
     width: 100%;
-    height: 100vh;
+    height: 70vh;
+
+    &.home-hero {
+      height: 100vh;
+    }
 
     &-caption {
       text-align: center;
@@ -79,6 +132,12 @@
       bottom: 0;
       left: 0;
       z-index: -1;
+    }
+
+    &-image {
+      @include background;
+
+      height: 70vh;
     }
 
     &-mask {
@@ -149,7 +208,6 @@
 
         p {
           font-size: 1.1rem;
-          margin-bottom: 4.375rem;
           letter-spacing: .3125rem;
           text-indent: .3125rem;
         }
@@ -166,6 +224,7 @@
 
       &-arrow {
         bottom: 20%;
+        margin-top: 4.375rem;
       }
     }
   }

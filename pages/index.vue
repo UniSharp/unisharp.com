@@ -1,6 +1,6 @@
 <template lang="pug">
   .index
-    u-banner
+    u-banner(:with-title="true", :is-home="true", is-hero="true", hometitle="專注深刻", hometitle2="完美呈現", subtitle="我們專注於打造絕佳的網路產品", :is-video="true", img-url="https://picsum.photos/1920/540", :with-arrow="true", :class="{'home-hero': true}")
     section.main
       p.content
         | 悠夏爾科技以堅實的技術研發能力，結合美觀易用的介面設計、良好的使用者體驗，
@@ -68,15 +68,6 @@
             data-bottom-top="background-position: 50% 100px;",
             data-anchor-target="#parallax-big-backend")
     u-features
-    section#contact.contact
-      .background(
-        data-top-bottom="background-position: 50% -100px;",
-        data-bottom-top="background-position: 50% 100px;",
-        data-anchor-target="#contact")
-      .wrapper
-        h6.title 與我們合作
-        p.content 打造出色產品的任務，就交給專業的悠夏爾團隊吧
-        nuxt-link.u-btn.u-btn-white(to="#") 聯絡洽詢
 </template>
 
 <script>
@@ -99,33 +90,6 @@
       font-size: 4.5vmin;
       line-height: 8.5vmin;
       text-align: center;
-    }
-
-    .contact {
-      @include parallax-background("~assets/images/index/contact.jpg") {
-        @include background-mask(rgba(38, 44, 50, .85));
-      }
-
-      height: 28.125rem;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-content: center;
-      justify-content: center;
-
-      .wrapper {
-        padding: 0 2rem;
-        text-align: center;
-
-        .title {
-          font-size: 2rem;
-          margin-bottom: 1rem;
-        }
-
-        .content {
-          margin-bottom: 2rem;
-        }
-      }
     }
 
     .introduction {

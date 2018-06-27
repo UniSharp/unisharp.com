@@ -15,7 +15,7 @@
               span.en service
               span.tw 服務項目
           li.u-nav-item
-            nuxt-link.u-nav-item-link(to="/")
+            nuxt-link.u-nav-item-link(to="/works")
               span.en works
               span.tw 合作案例
           li.u-nav-item
