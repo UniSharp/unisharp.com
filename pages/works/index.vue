@@ -76,12 +76,6 @@
       background-color: #f5f5f5;
     }
 
-    .col-3 {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-    }
-
     .mod-work {
       .card {
         border: 0;
