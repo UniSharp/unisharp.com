@@ -45,10 +45,6 @@
         type: Boolean,
         default: false
       },
-      isHero: {
-        type: String,
-        default: false
-      },
       title: {
         type: String,
         required: true
